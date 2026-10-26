@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+/* Light only, by request: soft warm bone page; evergreen is an accent only. */
+:root {
+  --bg: #f6f3ee;
+  --card: #fffdfa;
+  --shell: rgb(60 48 32 / 0.04);
+  --ink: #1d1b18;
+  --muted: #5f5a53;
+  --line: rgb(60 48 32 / 0.11);
+  --accent: #1e4b43;
+  --accent-hover: #153832;
+  --on-accent: #f6faf8;
+  --sage: #3f8a6e;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-card: var(--card);
+  --color-shell: var(--shell);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-on-accent: var(--on-accent);
+  --color-sage: var(--sage);
+  --font-sans: var(--font-atkinson);
+  --font-display: var(--font-bricolage);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-soft: 0 1px 2px rgb(60 48 32 / 0.05), 0 24px 48px -24px rgb(60 48 32 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(60 48 32 / 0.05), 0 40px 80px -32px rgb(60 48 32 / 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  scrollbar-color: var(--line) var(--bg);
+  color-scheme: light;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 1.125rem;
+  line-height: 1.65;
+  caret-color: var(--accent);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+a {
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-bricolage);
+  text-wrap: balance;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  font-variation-settings: "opsz" 96;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: one authored entrance on load, photo settles while copy rises. */
+  .hero-photo {
+    animation: settle 1600ms var(--ease-out-expo) both;
+  }
+  .enter {
+    animation: rise 1100ms var(--ease-out-expo) both;
+    animation-delay: calc(var(--d, 0) * 90ms);
+  }
+
+  /* Sections fade up as they scroll in; browsers without scroll timelines just show them. */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+  }
+
+  /* Tab panels and the room viewer crossfade on change. */
+  .tab-in {
+    animation: open 600ms var(--ease-out-expo);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+    filter: blur(8px);
+  }
+}
+
+@keyframes settle {
+  from {
+    scale: 1.06;
+  }
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+dialog::backdrop {
+  background: rgb(8 10 9 / 0.86);
+  backdrop-filter: blur(6px);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
