@@ -19,7 +19,7 @@ const care = [
   {
     id: "safety",
     title: "Safety and supervision",
-    text: "Round-the-clock caregiving staff, so your loved one is never alone. The home is set up for safety, with a curbless shower, grab bars and wide doorways.",
+    text: "Round-the-clock caregiving staff, so your loved one is never alone. The home is set up for safety, with call buttons, a round-the-clock security system, a curbless shower, grab bars and wide doorways.",
     photo: bathroom,
     alt: "Accessible bathroom with a curbless shower, shower chair and grab bars",
   },
@@ -33,7 +33,7 @@ const care = [
   {
     id: "activities",
     title: "Activities and connection",
-    text: "Daily programs keep residents engaged, active, and socially connected in shared living spaces.",
+    text: "Daily programs keep residents engaged, active, and socially connected in shared living spaces, from cards and chess to social and wellness activities.",
     photo: diningLiving,
     alt: "Dining area and living room with recliners and sofas",
   },
@@ -47,18 +47,20 @@ const care = [
   {
     id: "meals",
     title: "Home-cooked meals",
-    text: "Nutritious food made fresh in our kitchen every day. And every weekend, residents choose a meal from their favorite American restaurants.",
+    text: "Nutritious food made fresh in our kitchen every day, with each resident's preferences in mind. And every weekend, residents choose a meal from their favorite American restaurants.",
     photo: diningKitchen,
     alt: "Dining table set with colorful plates in front of the open kitchen",
   },
 ];
 
 const levels = [
-  { title: "Memory care", text: "Patient, consistent support for residents living with dementia or memory loss." },
+  { title: "Personal care", text: "Help with bathing, dressing, incontinence care, transfers and getting around." },
+  { title: "Memory care", text: "Calm surroundings and the same familiar caregivers for residents living with Alzheimer's or dementia.", href: "/care/memory-care" },
+  { title: "Hospice and end-of-life care", text: "Comfort, dignity and company in the final chapter, alongside the resident's hospice team.", href: "/care/hospice-care" },
   { title: "Mental health care", text: "Steady routines and attentive supervision for residents with mental health needs." },
   { title: "Turning and repositioning", text: "Regular, gentle repositioning for residents who spend much of the day in bed or a chair." },
-  { title: "Respite stays", text: "Short-term stays that give family caregivers time to rest, travel, or recover." },
-];
+  { title: "Respite stays", text: "Short-term stays that give family caregivers time to rest, travel, or recover.", href: "/care/respite-care" },
+] as { title: string; text: string; href?: string }[];
 
 const rooms = [
   { src: bedroom6, label: "Bedroom", alt: "Garden view and fresh flowers" },
@@ -75,7 +77,7 @@ const faqs = [
   },
   {
     q: "What levels of care do you provide?",
-    a: "Memory care, mental health care, turning and repositioning care, and short-term respite stays. Every resident has a personalized care plan that we review regularly, so the support changes as their needs change.",
+    a: "Personal care, memory care for Alzheimer's and dementia, hospice and end-of-life care, mental health care, turning and repositioning care, and short-term respite stays. Every resident has a personalized care plan that we review regularly, so the support changes as their needs change.",
   },
   {
     q: "How do I schedule a tour?",
@@ -134,6 +136,7 @@ export default function Home() {
         </div>
       </header>
 
+      <div aria-hidden className="scroll-progress" />
       <main id="main">
         {/* Hero: oversized headline on the page, photo framed below as a window, visit card docked on it */}
         <section className="pt-32 sm:pt-40">
@@ -194,22 +197,22 @@ export default function Home() {
         {/* About: centered statement, then a descending strip of real photos */}
         <section className="reveal mx-auto max-w-6xl px-4 py-28 sm:px-6 lg:py-40">
           <h2 className="sr-only">About Galilee</h2>
-          <p className="mx-auto max-w-[26ch] text-center font-display text-3xl leading-[1.2] font-medium tracking-[-0.02em] md:text-5xl">
+          <p className="ink-in mx-auto max-w-[26ch] text-center font-display text-3xl leading-[1.2] font-medium tracking-[-0.02em] md:text-5xl">
             For over four years, we&apos;ve cared for people the way family would.
           </p>
           <p className="mx-auto mt-8 max-w-[58ch] text-center text-lg text-muted">
             Compassionate caregivers, proven care practices, nutritious meals, and daily activities that support healthy
             aging. We partner with healthcare providers who are available 24/7, and our caregivers are on site around
-            the clock.
+            the clock. Private and semi-private rooms are furnished, and housekeeping is included.
           </p>
           <div className="mt-16 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-12 md:items-start">
-            <div className={`${shell} col-span-2 md:col-span-5`}>
+            <div className={`${shell} parallax col-span-2 md:col-span-5`} style={{ "--y": "20px" } as React.CSSProperties}>
               <Image src={bedroom6} alt="A bright bedroom with fresh flowers and a garden view" placeholder="blur" sizes="(min-width: 768px) 460px, 100vw" className="aspect-4/5 w-full rounded-3xl object-cover" />
             </div>
-            <div className={`${shell} md:col-span-4 md:mt-20`}>
+            <div className={`${shell} parallax md:col-span-4 md:mt-20`} style={{ "--y": "60px" } as React.CSSProperties}>
               <Image src={diningLiving} alt="The shared dining and living room" placeholder="blur" sizes="(min-width: 768px) 370px, 50vw" className="aspect-3/4 w-full rounded-3xl object-cover" />
             </div>
-            <div className={`${shell} md:col-span-3 md:mt-40`}>
+            <div className={`${shell} parallax md:col-span-3 md:mt-40`} style={{ "--y": "100px" } as React.CSSProperties}>
               <Image src={diningKitchen} alt="The open kitchen with the table set for a meal" placeholder="blur" sizes="(min-width: 768px) 280px, 50vw" className="aspect-3/4 w-full rounded-3xl object-cover md:aspect-square" />
             </div>
           </div>
@@ -226,10 +229,17 @@ export default function Home() {
         <section className="reveal mx-auto max-w-6xl px-4 pb-28 sm:px-6 lg:pb-40">
           <h2 className="text-4xl font-bold md:text-5xl">Levels of care</h2>
           <ul className="mt-14">
-            {levels.map(({ title, text }) => (
-              <li key={title} className="grid gap-3 border-t border-line py-9 md:grid-cols-12 md:items-baseline md:gap-8">
+            {levels.map(({ title, text, href }) => (
+              <li key={title} className="reveal grid gap-3 border-t border-line py-9 md:grid-cols-12 md:items-baseline md:gap-8">
                 <h3 className="text-3xl font-semibold md:col-span-6 md:text-4xl">{title}</h3>
-                <p className="max-w-[46ch] text-muted md:col-span-6">{text}</p>
+                <p className="max-w-[46ch] text-muted md:col-span-6">
+                  {text}
+                  {href && (
+                    <a href={href} className="mt-3 flex items-center gap-2 font-semibold text-accent underline underline-offset-4">
+                      Learn more <span className="sr-only">about {title.toLowerCase()}</span> <ArrowRight aria-hidden size={16} weight="bold" />
+                    </a>
+                  )}
+                </p>
               </li>
             ))}
           </ul>
@@ -247,7 +257,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold md:text-5xl lg:sticky lg:top-28 lg:col-span-4 lg:self-start">Questions families ask</h2>
           <dl className="grid gap-12 lg:col-span-7 lg:col-start-6">
             {faqs.map(({ q, a }) => (
-              <div key={q}>
+              <div key={q} className="reveal">
                 <dt className="font-display text-2xl font-semibold tracking-tight md:text-3xl">{q}</dt>
                 <dd className="mt-4 max-w-[60ch] text-muted">{a}</dd>
               </div>
@@ -321,6 +331,9 @@ export default function Home() {
           </address>
           <div className="grid content-start gap-1 text-muted md:col-span-3 md:text-right">
             <a href="#tour" className="underline">Schedule a tour</a>
+            {levels.filter((l) => l.href).map(({ title, href }) => (
+              <a key={href} href={href} className="underline">{title}</a>
+            ))}
             <a href="/privacy" className="underline">Privacy</a>
           </div>
         </div>

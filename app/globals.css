@@ -97,6 +97,46 @@ h3 {
     }
   }
 
+  @supports (animation-timeline: scroll()) {
+    /* Thin reading-progress bar along the top. */
+    .scroll-progress {
+      display: block;
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 50;
+      height: 3px;
+      background: var(--accent);
+      transform-origin: left;
+      animation: grow linear both;
+      animation-timeline: scroll(root);
+    }
+
+    /* Hero photo keeps its load-in zoom, then drifts down slower than the page.
+       Rests at 1.12 so the 5% drift never shows the frame edge. */
+    .hero-photo {
+      scale: 1.12;
+      animation: settle-in 1600ms var(--ease-out-expo) both, drift-down linear both;
+      animation-timeline: auto, view();
+      animation-range: normal, exit 0% exit 100%;
+    }
+
+    /* Photos glide at their own speed (--y) while they cross the screen. */
+    .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+    }
+
+    /* Statement text fills in from muted to ink, top line first, as it's read. */
+    .ink-in {
+      background: linear-gradient(var(--ink) 50%, var(--line) 50%) 0 100% / 100% 200%;
+      background-clip: text;
+      color: transparent;
+      animation: ink linear both;
+      animation-timeline: view();
+      animation-range: entry 60% cover 55%;
+    }
+  }
+
   /* Tab panels and the room viewer crossfade on change. */
   .tab-in {
     animation: open 600ms var(--ease-out-expo);
@@ -115,6 +155,43 @@ h3 {
   from {
     scale: 1.06;
   }
+}
+
+@keyframes grow {
+  from {
+    scale: 0 1;
+  }
+}
+
+@keyframes settle-in {
+  from {
+    scale: 1.18;
+  }
+}
+
+@keyframes drift-down {
+  to {
+    translate: 0 5%;
+  }
+}
+
+@keyframes parallax {
+  from {
+    translate: 0 var(--y, 40px);
+  }
+  to {
+    translate: 0 calc(var(--y, 40px) * -1);
+  }
+}
+
+@keyframes ink {
+  to {
+    background-position: 0 0;
+  }
+}
+
+.scroll-progress {
+  display: none;
 }
 
 @keyframes open {

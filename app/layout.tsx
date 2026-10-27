@@ -8,7 +8,7 @@ const display = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["l
 const body = Atkinson_Hyperlegible_Next({ variable: "--font-atkinson", subsets: ["latin"] });
 
 const description =
-  "A small, caring adult family home in Mountlake Terrace, WA. Memory care, mental health care, respite stays and 24/7 caregivers. Schedule a tour.";
+  "A small, caring adult family home in Mountlake Terrace, WA. Memory, hospice, mental health and respite care with 24/7 caregivers. Schedule a tour.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
