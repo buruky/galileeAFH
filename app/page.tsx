@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, ChatText, Check, Envelope, Gift, MapPin, NavigationArrow, Phone } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, ChatText, Check, Envelope, ForkKnife, Gift, MapPin, NavigationArrow, Phone } from "@phosphor-icons/react/dist/ssr";
 import { CareTabs } from "@/app/components/CareTabs";
 import { Gallery } from "@/app/components/Gallery";
 import { Reviews } from "@/app/components/Reviews";
@@ -90,7 +90,7 @@ function PrimaryCta() {
   return (
     <a
       href="#tour"
-      className="group inline-flex min-h-14 items-center gap-4 rounded-full bg-accent py-2 pr-2 pl-7 text-lg font-semibold whitespace-nowrap text-on-accent transition duration-500 ease-out-expo hover:bg-accent-hover active:scale-[0.98]"
+      className="group inline-flex min-h-14 items-center gap-4 rounded-full bg-accent py-2 pr-2 pl-7 text-lg font-semibold whitespace-nowrap text-on-accent press hover:bg-accent-hover"
     >
       Schedule a tour
       <span className="grid size-10 place-items-center rounded-full bg-on-accent/15 transition duration-500 ease-out-expo group-hover:translate-x-1 group-hover:scale-105">
@@ -106,9 +106,9 @@ export default function Home() {
       <div aria-hidden className="scroll-progress" />
       <main id="main">
         {/* Hero: oversized headline on the page, photo framed below as a window, visit card docked on it */}
-        <section className="pt-32 sm:pt-40">
+        <section className="pt-28 sm:pt-36">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <h1 className="enter text-[clamp(3rem,8vw,7rem)] leading-[0.95] font-bold">
+            <h1 className="enter text-[clamp(2.75rem,7vw,6rem)] leading-[0.95] font-bold">
               Comfort and care,<br className="hidden md:block" /> <span className="text-accent">right at home.</span>
             </h1>
             <div className="enter mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between" style={delay(1)}>
@@ -192,24 +192,46 @@ export default function Home() {
           <CareTabs items={care} />
         </section>
 
-        {/* Levels of care: typographic index */}
+        {/* Levels of care: two-column index */}
         <section className="reveal mx-auto max-w-6xl px-4 pb-28 sm:px-6 lg:pb-40">
           <h2 className="text-4xl font-bold md:text-5xl">Levels of care</h2>
-          <ul className="mt-14">
+          <ul className="mt-14 grid gap-x-16 md:grid-cols-2">
             {levels.map(({ title, text, href }) => (
-              <li key={title} className="reveal grid gap-3 border-t border-line py-9 md:grid-cols-12 md:items-baseline md:gap-8">
-                <h3 className="text-3xl font-semibold md:col-span-6 md:text-4xl">{title}</h3>
-                <p className="max-w-[46ch] text-muted md:col-span-6">
-                  {text}
-                  {href && (
-                    <a href={href} className="mt-3 flex items-center gap-2 font-semibold text-accent underline underline-offset-4">
-                      Learn more <span className="sr-only">about {title.toLowerCase()}</span> <ArrowRight aria-hidden size={16} weight="bold" />
-                    </a>
-                  )}
-                </p>
+              <li key={title} className="reveal flex flex-col gap-3 border-t border-line py-9">
+                <h3 className="text-2xl font-semibold md:text-3xl">{title}</h3>
+                <p className="max-w-[46ch] text-muted">{text}</p>
+                {href && (
+                  <a href={href} className="mt-1 inline-flex w-fit items-center gap-2 font-semibold text-accent underline underline-offset-4">
+                    Learn more <span className="sr-only">about {title.toLowerCase()}</span> <ArrowRight aria-hidden size={16} weight="bold" />
+                  </a>
+                )}
               </li>
             ))}
           </ul>
+        </section>
+
+        {/* Weekend meals: the one evergreen feature band on the page */}
+        <section className="reveal mx-auto max-w-[1400px] px-3 pb-28 sm:px-6 lg:pb-40">
+          <div className="relative isolate overflow-hidden rounded-4xl px-6 py-20 text-on-accent sm:rounded-[2.75rem] sm:px-12 lg:py-28">
+            <Image
+              src={diningKitchen}
+              alt=""
+              fill
+              placeholder="blur"
+              sizes="(min-width: 1400px) 1352px, 100vw"
+              className="parallax -z-10 scale-110 object-cover"
+              style={{ "--y": "30px" } as React.CSSProperties}
+            />
+            <div aria-hidden className="absolute inset-0 -z-10 bg-accent/80" />
+            <div className="mx-auto max-w-3xl text-center">
+              <ForkKnife aria-hidden size={36} weight="light" className="mx-auto" />
+              <h2 className="mt-6 text-4xl font-bold md:text-6xl">Every weekend, residents pick the restaurant.</h2>
+              <p className="mx-auto mt-6 max-w-[48ch] text-lg text-on-accent/90">
+                Home-cooked meals all week, made with each resident&apos;s preferences in mind. On weekends, everyone
+                chooses a meal from their favorite American restaurant.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Room viewer */}
@@ -242,7 +264,7 @@ export default function Home() {
             </p>
             <a
               href={tel(site.phones.office)}
-              className="group mt-8 inline-flex min-h-14 items-center gap-4 rounded-full bg-accent py-2 pr-2 pl-7 text-lg font-semibold whitespace-nowrap text-on-accent transition duration-500 ease-out-expo hover:bg-accent-hover active:scale-[0.98]"
+              className="group mt-8 inline-flex min-h-14 items-center gap-4 rounded-full bg-accent py-2 pr-2 pl-7 text-lg font-semibold whitespace-nowrap text-on-accent press hover:bg-accent-hover"
             >
               Call {site.phones.office}
               <span className="grid size-10 place-items-center rounded-full bg-on-accent/15 transition duration-500 ease-out-expo group-hover:scale-105">

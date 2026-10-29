@@ -41,7 +41,7 @@ export async function Reviews() {
           <p className="max-w-[46ch] text-lg">
             Has your family been cared for at Galilee? Your words help other families find a home they can trust.
           </p>
-          <a href={data.writeUrl} target="_blank" rel="noopener" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 text-lg font-semibold text-on-accent transition hover:bg-accent-hover">
+          <a href={data.writeUrl} target="_blank" rel="noopener" className="inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 text-lg font-semibold text-on-accent press hover:bg-accent-hover">
             Write a review on Google <ArrowRight aria-hidden size={18} weight="bold" />
           </a>
         </div>

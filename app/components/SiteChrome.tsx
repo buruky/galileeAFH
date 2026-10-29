@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Phone } from "@phosphor-icons/react/dist/ssr";
+import { MobileMenu } from "@/app/components/MobileMenu";
 import { Year } from "@/app/components/Year";
 import { services } from "@/lib/care";
 import { site, tel, fullAddress } from "@/lib/site";
@@ -8,6 +9,8 @@ import logo from "@/public/images/logo.webp";
 function Logo({ className }: { className: string }) {
   return <Image src={logo} alt={site.name} className={className} preload />;
 }
+
+const links = [["Care", "/#care"], ["Our home", "/#home"], ["FAQ", "/#faq"], ["Contact", "/#contact"]];
 
 // Shared by every page, so hash links point at the home page ("/#care").
 export function SiteHeader() {
@@ -18,24 +21,26 @@ export function SiteHeader() {
       </a>
 
       {/* Floating island nav */}
-      <header className="fixed inset-x-0 top-3 z-40 px-3 sm:top-5">
+      <header className="fixed inset-x-0 top-[max(0.75rem,env(safe-area-inset-top))] z-40 px-3 sm:top-[max(1.25rem,env(safe-area-inset-top))]">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-3 rounded-full bg-card/85 py-2 pr-2 pl-5 shadow-soft ring-1 ring-line backdrop-blur-xl">
           <a href="/" aria-label={`${site.name}, home`} className="shrink-0">
             <Logo className="h-9 w-auto sm:h-11" />
           </a>
           <nav aria-label="Main" className="hidden items-center gap-8 text-base lg:flex">
-            {[["Care", "/#care"], ["Our home", "/#home"], ["FAQ", "/#faq"], ["Contact", "/#contact"]].map(([l, h]) => (
+            {links.map(([l, h]) => (
               <a key={h} href={h} className="text-muted transition-colors hover:text-ink">{l}</a>
             ))}
           </nav>
           <div className="flex items-center gap-1.5">
-            <a href={tel(site.phones.office)} className="inline-flex h-12 items-center gap-2 rounded-full px-3.5 text-base font-semibold whitespace-nowrap transition hover:bg-shell sm:px-4">
+            <a href={tel(site.phones.office)} className="press inline-flex h-12 items-center gap-2 rounded-full px-3.5 text-base font-semibold whitespace-nowrap hover:bg-shell sm:px-4">
               <Phone aria-hidden size={20} weight="light" />
               <span className="sr-only md:not-sr-only">{site.phones.office}</span>
             </a>
-            <a href="/#tour" className="inline-flex h-12 items-center rounded-full bg-accent px-5 text-base font-semibold whitespace-nowrap text-on-accent transition duration-500 ease-out-expo hover:bg-accent-hover active:scale-[0.98]">
+            {/* Below sm the tour link lives in the menu, so the island fits a 360px phone. */}
+            <a href="/#tour" className="press hidden h-12 items-center rounded-full bg-accent px-5 text-base font-semibold whitespace-nowrap text-on-accent hover:bg-accent-hover sm:inline-flex">
               Schedule a tour
             </a>
+            <MobileMenu links={links} />
           </div>
         </div>
       </header>

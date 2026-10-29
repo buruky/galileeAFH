@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChatText, Check, Phone } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, ChatText, Check, Phone } from "@phosphor-icons/react/dist/ssr";
 import { services, type ServiceSlug } from "@/lib/care";
 import { site, tel, fullAddress } from "@/lib/site";
 
@@ -22,7 +22,10 @@ export default async function Service({ params }: PageProps<"/care/[slug]">) {
 
   return (
     <main id="main" className="mx-auto max-w-3xl px-4 pt-32 pb-28 sm:px-6 sm:pt-40">
-      <h1 className="text-4xl font-bold md:text-5xl">{s.title}</h1>
+      <a href="/#care" className="inline-flex min-h-12 items-center gap-2 text-base text-muted underline decoration-line underline-offset-4 hover:text-ink">
+        <ArrowLeft aria-hidden size={16} weight="bold" /> All care at Galilee
+      </a>
+      <h1 className="mt-4 text-4xl font-bold md:text-5xl">{s.title}</h1>
       <p className="mt-6 text-xl text-muted">{s.intro}</p>
 
       <h2 className="mt-14 text-2xl font-bold">What&apos;s included</h2>
@@ -39,7 +42,7 @@ export default async function Service({ params }: PageProps<"/care/[slug]">) {
         <p className="font-display text-2xl font-semibold tracking-tight">Come see the home</p>
         <p className="mt-2 text-muted">{fullAddress}</p>
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
-          <a href={tel(site.phones.office)} className="inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 text-lg font-semibold text-on-accent transition hover:bg-accent-hover">
+          <a href={tel(site.phones.office)} className="press inline-flex min-h-12 items-center gap-3 rounded-full bg-accent px-6 text-lg font-semibold text-on-accent hover:bg-accent-hover">
             <Phone aria-hidden size={20} weight="bold" /> Call {site.phones.office}
           </a>
           <a href={`sms:+1${site.phones.text.replace(/\D/g, "")}`} className="inline-flex min-h-12 items-center gap-2 text-lg font-semibold underline underline-offset-8">

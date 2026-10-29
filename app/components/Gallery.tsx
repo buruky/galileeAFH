@@ -13,7 +13,7 @@ export function Gallery({ photos }: { photos: Photo[] }) {
   const go = (d: number) => setI((i + d + photos.length) % photos.length);
 
   const arrow =
-    "grid size-12 place-items-center rounded-full bg-card/90 text-ink shadow-lift transition duration-500 ease-out-expo hover:scale-105 active:scale-95";
+    "grid size-12 place-items-center rounded-full bg-card/90 text-ink shadow-lift press hover:bg-card";
 
   return (
     <div
@@ -53,9 +53,9 @@ export function Gallery({ photos }: { photos: Photo[] }) {
         </figcaption>
       </figure>
 
-      <ul className="no-scrollbar mt-4 flex gap-3 overflow-x-auto pb-2">
+      <ul className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2">
         {photos.map((t, k) => (
-          <li key={t.label} className="shrink-0">
+          <li key={t.label} className="shrink-0 snap-start">
             <button
               type="button"
               onClick={() => setI(k)}
