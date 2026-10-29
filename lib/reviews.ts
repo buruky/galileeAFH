@@ -9,7 +9,7 @@ export type Review = {
   text: string;
 };
 
-export type Reviews = { rating: number; count: number; url: string; reviews: Review[] };
+export type Reviews = { rating: number; count: number; url: string; writeUrl: string; reviews: Review[] };
 
 // Google Places API (New) returns the place's 5 most relevant reviews; refetched every hour.
 export async function getReviews(): Promise<Reviews | null> {
@@ -33,6 +33,7 @@ export async function getReviews(): Promise<Reviews | null> {
       rating: p.rating ?? 0,
       count: p.userRatingCount ?? 0,
       url: p.googleMapsUri,
+      writeUrl: `https://search.google.com/local/writereview?placeid=${place}`,
       reviews: (p.reviews ?? [])
         .filter((r: any) => r.text?.text)
         .map((r: any) => ({
