@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowRight, ChatText, Check, Envelope, Gift, MapPin, NavigationArrow, Phone } from "@phosphor-icons/react/dist/ssr";
 import { CareTabs } from "@/app/components/CareTabs";
 import { Gallery } from "@/app/components/Gallery";
-import { TourForm } from "@/app/components/TourForm";
+import { Reviews } from "@/app/components/Reviews";
 import { Year } from "@/app/components/Year";
 import { site, tel, fullAddress, directionsUrl } from "@/lib/site";
 import logo from "@/public/images/logo.webp";
@@ -81,7 +81,7 @@ const faqs = [
   },
   {
     q: "How do I schedule a tour?",
-    a: `Fill out the form below, or call us at ${site.phones.office}. You can also text or Zoom us at ${site.phones.text}.`,
+    a: `Call us at ${site.phones.office}, or text or Zoom us at ${site.phones.text}. We'll find a time that works for your family.`,
   },
 ];
 
@@ -252,6 +252,8 @@ export default function Home() {
           <Gallery photos={rooms} />
         </section>
 
+        <Reviews />
+
         {/* FAQ: answers shown openly, no accordion */}
         <section id="faq" className="reveal mx-auto grid max-w-6xl gap-10 px-4 pb-28 sm:px-6 lg:grid-cols-12 lg:pb-40">
           <h2 className="text-4xl font-bold md:text-5xl lg:sticky lg:top-28 lg:col-span-4 lg:self-start">Questions families ask</h2>
@@ -270,10 +272,12 @@ export default function Home() {
           <div id="contact" className="lg:col-span-5">
             <h2 className="text-4xl font-bold md:text-5xl">Come see the home for yourself</h2>
             <p className="mt-5 max-w-[42ch] text-muted">
-              Ready to explore a caring, supportive home for yourself or a loved one? Tell us a little and we&apos;ll
-              set up a visit.
+              Ready to explore a caring, supportive home for yourself or a loved one? Call or text us and we&apos;ll set
+              up a visit.
             </p>
-            <ul className="mt-12 grid gap-7 text-lg">
+          </div>
+          <div className="lg:col-span-7">
+            <ul className="grid gap-7 text-lg">
               <li className="flex gap-4">
                 <MapPin aria-hidden size={26} weight="light" className="mt-0.5 shrink-0 text-accent" />
                 <span>
@@ -309,9 +313,6 @@ export default function Home() {
                 receive $500 as a thank-you.
               </span>
             </p>
-          </div>
-          <div className="lg:col-span-7">
-            <TourForm />
           </div>
         </section>
       </main>

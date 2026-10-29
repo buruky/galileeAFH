@@ -14,22 +14,18 @@ export default function Privacy() {
         </p>
         <h2>What we collect</h2>
         <p>
-          When you use the tour request form, we receive the details you enter: your name, phone number, and optionally
-          your email, who the care is for, a preferred day, and your message.
+          This website has no forms and does not ask for your personal information. If you call, text or email us, we
+          use what you share only to talk with you about a visit or about care at our home. We do not sell or share it
+          with marketers.
         </p>
-        <h2>How we use it</h2>
+        <h2>Google reviews</h2>
         <p>
-          We use this information only to contact you about a visit or about care at our home. We do not sell or share
-          it with marketers. Form messages are delivered to our email through a secure email service.
-        </p>
-        <h2>Health information</h2>
-        <p>
-          Please don't include detailed medical information in the form. We are happy to discuss care needs by phone or
-          in person.
+          The reviews shown on our home page come from Google. Reviewer names, photos and text are provided by Google
+          and are subject to the <a href="https://policies.google.com/privacy" className="underline">Google Privacy Policy</a>.
         </p>
         <h2>Contact</h2>
         <p>
-          To ask about or remove information you've sent us, call{" "}
+          Questions about privacy? Call{" "}
           <a href={tel(site.phones.office)} className="underline">{site.phones.office}</a> or email{" "}
           <a href={`mailto:${site.emails[0]}`} className="underline">{site.emails[0]}</a>.
         </p>

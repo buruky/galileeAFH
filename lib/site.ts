@@ -1,7 +1,7 @@
 // Single source for contact facts. Empty strings are unknown and stay hidden on the page.
 export const site = {
   name: "Galilee Adult Family Home",
-  url: "https://galileeafh.com",
+  url: "https://galileeafh.net",
   licenseNumber: "", // WA DSHS AFH license, waiting on the client
   address: {
     street: "22906 41st Pl W",
