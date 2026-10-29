@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Atkinson_Hyperlegible_Next, Bricolage_Grotesque } from "next/font/google";
-import { site, fullAddress } from "@/lib/site";
+import { SiteFooter, SiteHeader } from "@/app/components/SiteChrome";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"], axes: ["opsz"] });
@@ -45,7 +46,9 @@ const jsonLd = {
     postalCode: site.address.postal,
     addressCountry: "US",
   },
-  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`,
+  // The home's Google Maps listing and pin, from the Places API
+  hasMap: "https://maps.google.com/?cid=4567590431318255162",
+  geo: { "@type": "GeoCoordinates", latitude: 47.7902888, longitude: -122.2895552 },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -56,7 +59,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );

@@ -5,7 +5,7 @@ A few answers will make the new website more complete and help families trust yo
 ## Contact details
 1. Which number should families call first: 425-678-6584 or 206-883-3743?
 2. Your old website lists 425-412-6484 as the **fax**. We have it as the **text/Zoom** number, with 425-361-1949 as the fax. Which is correct?
-3. Which email should receive tour requests: galileeafh@gmail.com or galileecare@galileeafh.net?
+3. Which email should we show first: galileeafh@gmail.com or galileecare@galileeafh.net?
 4. What is your WA DSHS adult family home license number?
 5. Links to your Facebook and Instagram pages, if you'd like them on the site.
 
@@ -16,7 +16,7 @@ A few answers will make the new website more complete and help families trust yo
 9. What training or credentials does your team have (for example: nurse delegation, dementia or mental health specialty training)?
 
 ## The home
-10. How many residents are you licensed for, and how many rooms are private or semi-private?
+10. How many residents are you licensed for (a directory lists 6; is that right?), and how many rooms are private or semi-private?
 11. Do you have any openings right now?
 12. What are your visiting hours, or can families visit anytime?
 
@@ -28,7 +28,8 @@ A few answers will make the new website more complete and help families trust yo
 15. A sample weekly menu, if you have one.
 
 ## Reviews
-16. Two or three short quotes from families (with permission), or a link to your Google reviews.
+16. Your Google listing has no reviews yet. Please send families this link to leave one: https://search.google.com/local/writereview?placeid=ChIJCQbnKZYRkFQROqYyEkxXYz8
+17. Your Google listing is named "Galilee AFH LLC". Would you like to claim it in Google Business Profile and rename it "Galilee Adult Family Home"?
 
 ## Offers
-17. The email signup line in your document ends with "you'll receive a discount from…". What is the full offer, or should we leave it off?
+18. The email signup line in your document ends with "you'll receive a discount from…". What is the full offer, or should we leave it off?

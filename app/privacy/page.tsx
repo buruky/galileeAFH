@@ -5,9 +5,8 @@ export const metadata: Metadata = { title: "Privacy", alternates: { canonical: "
 
 export default function Privacy() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
-      <a href="/" className="font-semibold text-accent underline">Back to home</a>
-      <h1 className="mt-8 text-4xl font-bold">Privacy</h1>
+    <main id="main" className="mx-auto max-w-3xl px-4 pt-32 pb-28 sm:px-6 sm:pt-40">
+      <h1 className="text-4xl font-bold">Privacy</h1>
       <div className="mt-8 grid gap-5 text-muted [&_h2]:mt-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-ink">
         <p>
           {site.name} respects your privacy. This page explains what we collect through this website and how we use it.
@@ -26,7 +25,7 @@ export default function Privacy() {
         <h2>Contact</h2>
         <p>
           Questions about privacy? Call{" "}
-          <a href={tel(site.phones.office)} className="underline">{site.phones.office}</a> or email{" "}
+          <a href={tel(site.phones.office)} className="whitespace-nowrap underline">{site.phones.office}</a> or email{" "}
           <a href={`mailto:${site.emails[0]}`} className="underline">{site.emails[0]}</a>.
         </p>
       </div>

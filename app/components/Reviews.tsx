@@ -38,7 +38,6 @@ export async function Reviews() {
       </div>
       {data.reviews.length === 0 ? (
         <div className="mt-12 flex flex-col items-start gap-5 rounded-3xl bg-card p-8 shadow-soft ring-1 ring-line sm:p-10">
-          <Stars n={0} size={28} />
           <p className="max-w-[46ch] text-lg">
             Has your family been cared for at Galilee? Your words help other families find a home they can trust.
           </p>
