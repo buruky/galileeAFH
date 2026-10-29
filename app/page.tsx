@@ -252,8 +252,6 @@ export default function Home() {
           <Gallery photos={rooms} />
         </section>
 
-        <Reviews />
-
         {/* FAQ: answers shown openly, no accordion */}
         <section id="faq" className="reveal mx-auto grid max-w-6xl gap-10 px-4 pb-28 sm:px-6 lg:grid-cols-12 lg:pb-40">
           <h2 className="text-4xl font-bold md:text-5xl lg:sticky lg:top-28 lg:col-span-4 lg:self-start">Questions families ask</h2>
@@ -268,16 +266,26 @@ export default function Home() {
         </section>
 
         {/* Tour + contact */}
-        <section id="tour" className="reveal mx-auto grid max-w-6xl gap-14 px-4 pb-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pb-40">
+        <section id="tour" className="reveal mx-auto grid max-w-6xl gap-10 px-4 pb-28 sm:px-6 lg:grid-cols-12 lg:gap-8 lg:pb-40">
           <div id="contact" className="lg:col-span-5">
             <h2 className="text-4xl font-bold md:text-5xl">Come see the home for yourself</h2>
             <p className="mt-5 max-w-[42ch] text-muted">
               Ready to explore a caring, supportive home for yourself or a loved one? Call or text us and we&apos;ll set
               up a visit.
             </p>
+            <a
+              href={tel(site.phones.office)}
+              className="group mt-8 inline-flex min-h-14 items-center gap-4 rounded-full bg-accent py-2 pr-2 pl-7 text-lg font-semibold whitespace-nowrap text-on-accent transition duration-500 ease-out-expo hover:bg-accent-hover active:scale-[0.98]"
+            >
+              Call {site.phones.office}
+              <span className="grid size-10 place-items-center rounded-full bg-on-accent/15 transition duration-500 ease-out-expo group-hover:scale-105">
+                <Phone aria-hidden size={18} weight="bold" />
+              </span>
+            </a>
           </div>
-          <div className="lg:col-span-7">
-            <ul className="grid gap-7 text-lg">
+          <div className="rounded-4xl bg-shell p-2 ring-1 ring-line lg:col-span-7">
+           <div className="rounded-3xl bg-card p-6 shadow-soft sm:p-10">
+            <ul className="grid gap-6 text-lg">
               <li className="flex gap-4">
                 <MapPin aria-hidden size={26} weight="light" className="mt-0.5 shrink-0 text-accent" />
                 <span>
@@ -306,15 +314,18 @@ export default function Home() {
                 </span>
               </li>
             </ul>
-            <p className="mt-12 flex gap-4 border-t border-line pt-8 text-base text-muted">
+            <p className="mt-8 flex gap-4 border-t border-line pt-6 text-base text-muted">
               <Gift aria-hidden size={26} weight="light" className="shrink-0 text-accent" />
               <span>
                 <strong className="text-ink">$500 referral bonus.</strong> Past families and staff who refer a new resident
                 receive $500 as a thank-you.
               </span>
             </p>
+           </div>
           </div>
         </section>
+
+        <Reviews />
       </main>
 
       <footer className="border-t border-line">
